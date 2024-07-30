@@ -2,6 +2,7 @@
 
 #include "dsalgocpp/search.hpp"
 #include <array>
+#include <vector>
 
 
 TEST_CASE( "Search", "[BINARY]" ) {
@@ -18,6 +19,8 @@ TEST_CASE( "Search", "[BINARY]" ) {
     result = dsa::BinarySearch::search(data, 5);
     REQUIRE(result == 4);
     result = dsa::BinarySearch::search(data, 11);
+    REQUIRE(result == std::nullopt);
+    result = dsa::BinarySearch::search(data, 0);
     REQUIRE(result == std::nullopt);
 
     std::array<int, 9> data_array{1, 2, 3, 4, 5, 6, 7, 8, 9};

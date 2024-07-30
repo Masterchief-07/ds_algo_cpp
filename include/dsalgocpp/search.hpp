@@ -1,8 +1,4 @@
 #pragma once
-#include <cstddef>
-#include <vector>
-#include <algorithm>
-#include <exception>
 #include <optional>
 
 namespace dsa{
@@ -19,17 +15,14 @@ namespace dsa{
                 if (item == data[middle]){
                     return middle;
                 }
-
                 else if (item > data[middle] ){
                     low_index = middle + 1;
                 }
-
                 else{
                     high_index = middle;
                 }
 
             }
-
             return std::nullopt;
         }
     };
