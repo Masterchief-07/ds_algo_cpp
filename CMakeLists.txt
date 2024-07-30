@@ -6,13 +6,17 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_definitions(-Wall -Wextra -pedantic -g)
 
-file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS ${PROJECT_SOURCE_DIR}/src/*.cpp)
+add_library(${PROJECT_NAME} INTERFACE)
 
-add_library(${PROJECT_NAME} STATIC ${SRC_FILES})
+target_include_directories(${PROJECT_NAME} INTERFACE ${PROJECT_SOURCE_DIR}/include/)
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include/)
+target_compile_options(${PROJECT_NAME} INTERFACE 
+        -Wall 
+        -Wextra 
+        -pedantic 
+        -g
+)
 
 enable_testing()
 
