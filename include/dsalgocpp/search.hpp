@@ -1,19 +1,37 @@
 #pragma once
 #include <cstddef>
-#include <array>
+#include <vector>
+#include <algorithm>
+#include <exception>
+#include <optional>
 
-class BaseSearch{
-    virtual std::size_t search(int value) = 0;
-};
+namespace dsa{
+    class BinarySearch{
+        public:
+        template<typename T, typename v>
+        static std::optional<std::size_t> search(const T& data, const v item){
+            std::size_t low_index = 0;
+            std::size_t high_index = data.size();
 
-class BinarySearch: public BaseSearch{
+            while (low_index < high_index){
+                auto middle = low_index + (high_index - low_index) / 2;
 
-    BinarySearch();
+                if (item == data[middle]){
+                    return middle;
+                }
 
-    std::size_t search(int value){
+                else if (item > data[middle] ){
+                    low_index = middle + 1;
+                }
 
-        return 0;
-    }
+                else{
+                    high_index = middle;
+                }
 
+            }
+
+            return std::nullopt;
+        }
+    };
 
 };
